@@ -15,10 +15,8 @@ let testProduct = {
 describe("Testes rota /categories", () => {
   it("Testando criacao de categoria", async () => {
     const response = await request(app).post("/categories").send(testCategory);
-
     testCategory.id = response.body.category.id;
     testProduct.category_id = response.body.category.id;
-
     expect(response.status).toBe(201);
     expect(response.body.message).toBeDefined();
     expect(response.body.category.id).toBeDefined();
