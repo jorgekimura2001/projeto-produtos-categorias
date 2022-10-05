@@ -14,8 +14,7 @@ const updateProductService = async (id, product) => {
             query = query.slice(0, -2)
 
             query += ` WHERE id = \$${keys.length+=1} RETURNING *;` 
-            console.log(query)
-
+        
             const res = await database.query(
                 query, [...values, id]
             )

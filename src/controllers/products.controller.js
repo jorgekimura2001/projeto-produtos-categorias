@@ -1,5 +1,7 @@
 import createProductService from "../services/products/createProduct.service"
+import deleteProductService from "../services/products/deleteProduct.service"
 import listAllProductsService from "../services/products/listAllProducts.service"
+import listProductsByCategoryService from "../services/products/listProductsByCategory.service"
 import listRetrieveProductService from "../services/products/listRetrieveProduct.service"
 import updateProductService from "../services/products/updateProduct.service"
 
@@ -49,6 +51,36 @@ export const updateProductController = async (req, res) => {
 
         return res.json(productUpdated)
 
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
+
+export const deleteProductController = async (req, res) => {
+
+    const {id} = req.params
+
+    try {
+
+        await deleteProductService(id)
+        
+        return res.status(204).send();
+        
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
+
+export const listProductsByCategoryController = async (req, res) => {
+
+    const {category_id} = req.params
+
+    try {
+
+        const products = await listProductsByCategoryService(category_id)
+        
+        return res.json(products);
+        
     } catch (error) {
         return res.status(400).json(error.message)
     }
