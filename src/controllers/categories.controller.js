@@ -1,5 +1,6 @@
 import createCategoryService from "../services/categories/createCategory.service"
 import listAllCategoriesService from "../services/categories/listAllCategories.service"
+import listRetrieveCategoryService from "../services/categories/listRetrieveCategory.service"
 
 export const createCategoryController = async (req, res) => {
     const {name} = req.body
@@ -18,6 +19,20 @@ export const listAllCategoriesController = async (req, res) => {
         const categories = await listAllCategoriesService()
 
         return res.json(categories)
+
+    } catch (error) {
+        return res.status(400).json(error.message)
+    }
+}
+
+export const listRetrieveCategoryController = async (req, res) => {
+
+    const {id} = req.params
+
+    try {
+        const category = await listRetrieveCategoryService(id)
+
+        return res.json(category)
 
     } catch (error) {
         return res.status(400).json(error.message)
