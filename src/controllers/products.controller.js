@@ -13,7 +13,7 @@ export const createProductController = async (req, res) => {
         return res.status(201).json(newProduct)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -24,7 +24,7 @@ export const listAllProductsController = async (req, res) => {
         return res.json(products)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -37,7 +37,7 @@ export const listRetrieveProductController = async (req, res) => {
         return res.json(product)
         
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -52,7 +52,7 @@ export const updateProductController = async (req, res) => {
         return res.json(productUpdated)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -67,7 +67,7 @@ export const deleteProductController = async (req, res) => {
         return res.status(204).send();
         
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -82,6 +82,6 @@ export const listProductsByCategoryController = async (req, res) => {
         return res.json(products);
         
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }

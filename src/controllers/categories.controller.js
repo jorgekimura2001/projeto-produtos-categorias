@@ -12,7 +12,7 @@ export const createCategoryController = async (req, res) => {
         return res.status(201).json(newCategory)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -23,7 +23,7 @@ export const listAllCategoriesController = async (req, res) => {
         return res.json(categories)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -37,7 +37,7 @@ export const listRetrieveCategoryController = async (req, res) => {
         return res.json(category)
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -52,7 +52,7 @@ export const updateCategoryController = async (req, res) => {
         return res.json(categoryUpdated)
         
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }
 
@@ -66,6 +66,6 @@ export const deleteCategoryController = async (req, res) => {
         return res.status(204).send();
 
     } catch (error) {
-        return res.status(400).json(error.message)
+        return res.status(400).json({'message': error.message})
     }
 }

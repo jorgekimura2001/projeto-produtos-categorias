@@ -3,7 +3,7 @@ import database from "../../database"
 const listRetrieveProductService = async (id) => {
     try {
         const res = await database.query(
-            `SELECT * FROM products WHERE id = $1`, [id]
+            `SELECT * FROM products WHERE id = $1;`, [id]
         )
         
         if(res.rowCount === 0){
