@@ -8,8 +8,10 @@ const app = express();
 app.use(express.json());
 app.use('/categories', categoriesRouter)
 
-export default app.listen(3333, () => {
+app.listen(3333, () => {
   startDatabase()
 });
+
+export default app
 
 
