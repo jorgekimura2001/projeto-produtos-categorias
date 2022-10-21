@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/categories', categoriesRouter)
 app.use('/products', productsRouter)
 
-app.listen(3333, () => {
+app.listen(process.env.PORT, () => {
   startDatabase()
 });
 
