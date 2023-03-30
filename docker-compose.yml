@@ -8,11 +8,7 @@ services:
     ports:
       - 8080:8080
     environment:
-      - DB_USER=jorge
-      - DB_PASSWORD=1234
-      - DB_HOST=db
-      - DB_PORT=5432
-      - DB=products_management
+      - .env
     depends_on:
       db:
         condition: service_healthy
@@ -21,14 +17,12 @@ services:
     image: postgres:12
     ports:
       - 5433:5432
-    environment:
-      - POSTGRES_USER=jorge
-      - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=products_management
+    env_file:
+      - .env
     volumes:
       - ./create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U jorge -d products_management"]
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
       interval: 10s
       timeout: 5s
       retries: 5
